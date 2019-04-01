@@ -1,5 +1,5 @@
 class PokemonsController < ApplicationController
-  before_action :set_pokemon, only: [:show, :edit, :update, :destroy]
+  before_action :set_pokemon, only: [:show, :update, :destroy]
 
   # GET /pokemons
   # GET /pokemons.json
@@ -12,42 +12,25 @@ class PokemonsController < ApplicationController
   def show
   end
 
-  # GET /pokemons/new
-  def new
-    @pokemon = Pokemon.new
-  end
-
-  # GET /pokemons/1/edit
-  def edit
-  end
-
   # POST /pokemons
   # POST /pokemons.json
   def create
     @pokemon = Pokemon.new(pokemon_params)
 
-    respond_to do |format|
-      if @pokemon.save
-        format.html { redirect_to @pokemon, notice: 'Pokemon was successfully created.' }
-        format.json { render :show, status: :created, location: @pokemon }
-      else
-        format.html { render :new }
-        format.json { render json: @pokemon.errors, status: :unprocessable_entity }
-      end
+    if @pokemon.save
+      render :show, status: :created, location: @pokemon
+    else
+      render json: @pokemon.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /pokemons/1
   # PATCH/PUT /pokemons/1.json
   def update
-    respond_to do |format|
-      if @pokemon.update(pokemon_params)
-        format.html { redirect_to @pokemon, notice: 'Pokemon was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pokemon }
-      else
-        format.html { render :edit }
-        format.json { render json: @pokemon.errors, status: :unprocessable_entity }
-      end
+    if @pokemon.update(pokemon_params)
+      render :show, status: :ok, location: @pokemon
+    else
+      render json: @pokemon.errors, status: :unprocessable_entity
     end
   end
 
@@ -55,10 +38,6 @@ class PokemonsController < ApplicationController
   # DELETE /pokemons/1.json
   def destroy
     @pokemon.destroy
-    respond_to do |format|
-      format.html { redirect_to pokemons_url, notice: 'Pokemon was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -69,6 +48,6 @@ class PokemonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pokemon_params
-      params.require(:pokemon).permit(:nome, :tipos, :evolucao, :anteEvolucao)
+      params.require(:pokemon).permit(:nome, :tipos, :imagem, :evolucao, :anteEvolucao)
     end
 end

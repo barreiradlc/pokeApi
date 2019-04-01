@@ -6,43 +6,33 @@ class PokemonsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get pokemons_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_pokemon_url
+    get pokemons_url, as: :json
     assert_response :success
   end
 
   test "should create pokemon" do
     assert_difference('Pokemon.count') do
-      post pokemons_url, params: { pokemon: { anteEvolucao: @pokemon.anteEvolucao, evolucao: @pokemon.evolucao, nome: @pokemon.nome, tipos: @pokemon.tipos } }
+      post pokemons_url, params: { pokemon: { anteEvolucao: @pokemon.anteEvolucao, evolucao: @pokemon.evolucao, imagem: @pokemon.imagem, nome: @pokemon.nome, tipos: @pokemon.tipos } }, as: :json
     end
 
-    assert_redirected_to pokemon_url(Pokemon.last)
+    assert_response 201
   end
 
   test "should show pokemon" do
-    get pokemon_url(@pokemon)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_pokemon_url(@pokemon)
+    get pokemon_url(@pokemon), as: :json
     assert_response :success
   end
 
   test "should update pokemon" do
-    patch pokemon_url(@pokemon), params: { pokemon: { anteEvolucao: @pokemon.anteEvolucao, evolucao: @pokemon.evolucao, nome: @pokemon.nome, tipos: @pokemon.tipos } }
-    assert_redirected_to pokemon_url(@pokemon)
+    patch pokemon_url(@pokemon), params: { pokemon: { anteEvolucao: @pokemon.anteEvolucao, evolucao: @pokemon.evolucao, imagem: @pokemon.imagem, nome: @pokemon.nome, tipos: @pokemon.tipos } }, as: :json
+    assert_response 200
   end
 
   test "should destroy pokemon" do
     assert_difference('Pokemon.count', -1) do
-      delete pokemon_url(@pokemon)
+      delete pokemon_url(@pokemon), as: :json
     end
 
-    assert_redirected_to pokemons_url
+    assert_response 204
   end
 end

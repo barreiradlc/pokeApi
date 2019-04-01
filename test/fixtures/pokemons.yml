@@ -3,11 +3,13 @@
 one:
   nome: MyString
   tipos: MyString
+  imagem: MyString
   evolucao: MyString
   anteEvolucao: MyString
 
 two:
   nome: MyString
   tipos: MyString
+  imagem: MyString
   evolucao: MyString
   anteEvolucao: MyString
