@@ -20,7 +20,7 @@ Pokemon.delete_all
 
         object = {
                 "nome":       @item["name"],
-                "tipo":       @tipos["types"],
+                "tipos":       @tipos["types"],
                 "imagem":     @img["sprites"],
                 "evolucao":         @item[""],
                 "anteEvolucao":     @item[""]
