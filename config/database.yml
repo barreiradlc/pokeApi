@@ -80,6 +80,9 @@ test:
 #
 production:
   <<: *default
-  database: pokeRibonApi_production
-  username: pokeRibonApi
-  password: <%= ENV['POKERIBONAPI_DATABASE_PASSWORD'] %>
+  database: ddgdqigi7cmvka
+  username: ihldnpolrbbtjl
+  password: 56cbafeb0ac8ca96016706ed31702183fccac3e48f3704c8aa4a21795ec6c519
+  uri: postgres://ihldnpolrbbtjl:56cbafeb0ac8ca96016706ed31702183fccac3e48f3704c8aa4a21795ec6c519@ec2-184-73-153-64.compute-1.amazonaws.com:5432/ddgdqigi7cmvka
+
+  port: 5432
