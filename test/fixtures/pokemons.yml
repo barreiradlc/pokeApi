@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  tipos: MyString
+  evolucao: MyString
+  anteEvolucao: MyString
+
+two:
+  nome: MyString
+  tipos: MyString
+  evolucao: MyString
+  anteEvolucao: MyString
